@@ -32,7 +32,11 @@
         ]
     },
     "authors": {
-        "name": "Instrye",
-        "homepage": "https://www.ddnpc.com"
+        "name": [
+            "Instrye"
+        ],
+        "homepage": [
+            "https://www.ddnpc.com"
+        ]
     }
 }
