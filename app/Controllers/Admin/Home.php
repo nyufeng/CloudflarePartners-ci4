@@ -23,7 +23,7 @@ class Home extends Controller
         }
         echo view('admin/head');
         echo view('admin/index',[
-            'hosted_zones' => $userInfo['response']['hosted_zones'],
+            'hosted_zones' => $userInfo['response']['hosted_zones'] ?? [],
         ]);
         echo view('admin/footer.php');
         return;
