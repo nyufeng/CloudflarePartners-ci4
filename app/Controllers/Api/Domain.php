@@ -1,6 +1,6 @@
 <?php namespace App\Controllers\Api;
 
-class Domain extends \App\Controllers\ApiController
+class Domain extends ApiController
 {
 	public function delete()
 	{

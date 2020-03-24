@@ -1,7 +1,7 @@
 <?php namespace App\Controllers\Api;
 
 
-class Subdomain extends \App\Controllers\ApiController{
+class Subdomain extends ApiController{
 
 	public function add()
 	{
@@ -34,7 +34,7 @@ class Subdomain extends \App\Controllers\ApiController{
 		if(empty($subDomain) || empty($domain)){
 			return $this->fail('请输入 子域名');
 		}
-		$domainList = $_SESSION['hosted_cnames' . '_' .$domain];
+        $domainList = $_SESSION['hosted_cnames' . '_' .$domain];
 		unset($domainList[$subDomain]);
 		return $this->process($domain, $domainList);
 	}

@@ -31,19 +31,24 @@ class Services extends CoreServices
 	//        return new \CodeIgniter\Example();
 	//    }
 
-	public static function honeypot(BaseConfig $config = null, $getShared = true)
+	public static function user($getShared = true)
 	{
 		if ($getShared)
 		{
-			return static::getSharedInstance('honeypot', $config);
+			return static::getSharedInstance('user');
 		}
 
-		if (is_null($config))
-		{
-			$config = new \Config\Honeypot();
-		}
-
-		return new \CodeIgniter\Honeypot\Honeypot($config);
+		return new \App\Models\User();
 	}
 
+	public static function cloudflare($apiKey = null, $getShared = true)
+	{
+		if ($getShared && $apiKey == null)
+		{
+			return static::getSharedInstance('cloudflare', env('CF_API_KEY'));
+		}
+
+		return new \App\Libraries\Cloudflare($apiKey);
+	}
+	
 }

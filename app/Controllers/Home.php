@@ -1,8 +1,6 @@
 <?php namespace App\Controllers;
 
-use CodeIgniter\Controller;
-
-class Home extends Controller
+class Home extends BaseController
 {
 	public function index()
 	{
@@ -11,10 +9,13 @@ class Home extends Controller
 
 	public function login()
 	{
-		session_start();
-		if(isset($_SESSION['isLogin']) && $_SESSION['isLogin'] == true){
-            return redirect()->to('/Admin');
-        }
+		if(\CodeIgniter\Services::user()->user_id() !== null)
+		{
+			return redirect()->to('/admin');
+		}
 		return view('login');
 	}
+
+	//--------------------------------------------------------------------
+
 }

@@ -21,7 +21,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = '';
+	public $baseURL = 'http://localhost:8080/';
 
 	/*
 	|--------------------------------------------------------------------------
@@ -237,12 +237,14 @@ class App extends BaseConfig
 	| recommended CSRF protection be enabled.
 	|
 	| CSRFTokenName   = The token name
+	| CSRFHeaderName  = The header name
 	| CSRFCookieName  = The cookie name
 	| CSRFExpire      = The number in seconds the token should expire.
 	| CSRFRegenerate  = Regenerate token on every submission
 	| CSRFRedirect    = Redirect to previous page with error on failure
 	*/
 	public $CSRFTokenName  = 'csrf_test_name';
+	public $CSRFHeaderName = 'X-CSRF-TOKEN';
 	public $CSRFCookieName = 'csrf_cookie_name';
 	public $CSRFExpire     = 7200;
 	public $CSRFRegenerate = true;
@@ -263,20 +265,4 @@ class App extends BaseConfig
 	|   - http://www.w3.org/TR/CSP/
 	*/
 	public $CSPEnabled = false;
-
-	/*
-	|--------------------------------------------------------------------------
-	| Application Salt
-	|--------------------------------------------------------------------------
-	|
-	| The $salt can be used anywhere within the application that you need
-	| to provide secure data. It should be different for every application
-	| and can be of any length, though the more random the characters
-	| the better.
-	|
-	*/
-	public $salt = '';
-
-	//--------------------------------------------------------------------
-
 }

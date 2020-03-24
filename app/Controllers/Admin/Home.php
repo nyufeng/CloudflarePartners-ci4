@@ -3,14 +3,10 @@
 use CodeIgniter\Controller;
 
 class Home extends Controller
-{
-    public function __construct(){
-        $this->cf = new \App\Libraries\Cloudflare(getenv('CF_API_KEY'));
-    }
-    
+{   
     public function index()
     {
-        $userInfo = $this->cf->userInfo($_SESSION['email']);
+        $userInfo = \CodeIgniter\Services::cloudflare()->userInfo(\CodeIgniter\Services::user()->user_id());
         if($userInfo['result'] == 'error'){
             return view('error',[
                 'code' => 500,
@@ -30,7 +26,7 @@ class Home extends Controller
     }
 
     public function edit($domain){
-        $domainInfo = $this->cf->domainList($domain, $_SESSION['user_key']);
+        $domainInfo = \CodeIgniter\Services::cloudflare()->domainList($domain, session('user_key'));
         if($domainInfo['result'] == 'error'){
             return view('error',[
                 'code' => 500,
@@ -50,8 +46,8 @@ class Home extends Controller
 				'message2' => '',
 				'message3' => '',
 			]);
-		}
-        $_SESSION['hosted_cnames' . '_' .$domainInfo['response']['zone_name']] = $domainInfo['response']['hosted_cnames'];
+        }
+        session()->set('hosted_cnames' . '_' .$domainInfo['response']['zone_name'], $domainInfo['response']['hosted_cnames']);
         echo view('admin/head');
         echo view('admin/edit',[
             'response' => $domainInfo['response'],
