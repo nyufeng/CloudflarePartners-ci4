@@ -38,7 +38,6 @@ class Filters extends BaseConfig
 			'before' => [
 				'admin',
 				'admin/*',
-				'api/*'
 			]
 		]
 	];

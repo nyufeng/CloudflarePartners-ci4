@@ -32,7 +32,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="/vendor/jquery/jquery.min.js"></script>
-	<script src="/layer.js"></script>
+	<script src="/layer/layer.js"></script>
 
 </head>
 
